@@ -11,3 +11,6 @@ Code Nest leverages **multithreading** to execute code in parallel, ensuring tha
 ## Important Notice
 
 To enable code execution within the application, **App Sandbox** must be disabled. This can be done by navigating to **Signing & Capabilities** in the project settings and removing the **App Sandbox** entitlement.
+
+
+Video demonstration: https://www.youtube.com/watch?v=UauVFa2tbSU

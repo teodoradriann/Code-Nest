@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3A36EFDE2D8440A5002C130E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3A36EFDD2D8440A1002C130E /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		3A36EFB42D843C66002C130E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		3A36EFA22D843C65002C130E /* Code Nest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code Nest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A36EFB32D843C66002C130E /* Code NestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Code NestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A36EFBD2D843C66002C130E /* Code NestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Code NestUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A36EFDD2D8440A1002C130E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		3A36EF992D843C65002C130E = {
 			isa = PBXGroup;
 			children = (
+				3A36EFDD2D8440A1002C130E /* README.md */,
 				3A36EFA42D843C65002C130E /* Code Nest */,
 				3A36EFB62D843C66002C130E /* Code NestTests */,
 				3A36EFC02D843C66002C130E /* Code NestUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A36EFDE2D8440A5002C130E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

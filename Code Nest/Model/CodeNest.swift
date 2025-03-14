@@ -8,7 +8,7 @@
 import Foundation
 import Darwin
 
-private let maxOutputLength = 32768
+private let maxOutputLength = 16384
 
 struct CodeNest {
     private(set) var code: String?
@@ -79,8 +79,8 @@ struct CodeNest {
                     if !outputData.isEmpty, let newOutput = String(data: outputData, encoding: .utf8) {
                         runner.output = (runner.output ?? "") + newOutput
                         if runner.output?.count ?? 0 > maxOutputLength {
-                            runner.terminateProcess()
                             runner.terminated = true
+                            runner.terminateProcess()
                         }
                         DispatchQueue.main.async {
                             completion(runner)

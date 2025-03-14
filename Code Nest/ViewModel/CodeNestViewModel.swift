@@ -47,7 +47,8 @@ class CodeNestViewModel: ObservableObject {
     }
     
     var terminated: Bool {
-        codeRunner.terminated
+        print (codeRunner.terminated)
+        return codeRunner.terminated
     }
     
     var output: String {

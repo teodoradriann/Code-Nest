@@ -54,8 +54,8 @@ class CodeNestViewModel: ObservableObject {
         codeRunner.output ?? ""
     }
     
-    var error: String {
-        codeRunner.error ?? ""
+    var errors: [String] {
+        codeRunner.errors ?? []
     }
     
     var fileName: String {

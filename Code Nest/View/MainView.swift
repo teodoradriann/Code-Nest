@@ -120,8 +120,8 @@ struct ContentView: View {
                         Spacer()
                         styledTextEditor($code, geometry.size, $lineWithError)
                         output(.constant(viewModel.terminated ?
-                                         "Process automatically terminated (buffer overloaded).\n\n\(viewModel.output)" :
-                                            (viewModel.output.isEmpty == false ? "Compilation successful!\n\n\(viewModel.output)" : viewModel.error)), $clickedError, $lineWithError)
+                                         ["Process automatically terminated (buffer overloaded).\n\n\(viewModel.output)"] :
+                                            (viewModel.output.isEmpty == false ? ["Compilation successful!\n\n\(viewModel.output)"] : viewModel.errors)), $clickedError, $lineWithError)
                         .frame(width: geometry.size.width / 4)
                         Spacer()
                     }
@@ -132,23 +132,27 @@ struct ContentView: View {
     }
 }
 
-func output(_ displayedOutput: Binding<String>, _ clickedError: Binding<Bool>, _ lineError: Binding<Int>) -> some View {
+func output(_ displayedOutput: Binding<[String]>, _ clickedError: Binding<Bool>, _ lineError: Binding<Int>) -> some View {
     ZStack {
         RoundedRectangle(cornerRadius: 5)
             .fill(Color.black.opacity(0.3))
             .border(Color(.gray), width: 2)
         ScrollView {
-            Button(action: {
-                lineError.wrappedValue = extractLine(text: displayedOutput.wrappedValue) ?? 0
-                print (lineError.wrappedValue)
-                clickedError.wrappedValue = true
-            }) {
-                Text(displayedOutput.wrappedValue)
-                    .font(.system(size: 16, weight: .regular, design: .monospaced))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                    .textSelection(.enabled)
-            }.buttonStyle(PlainButtonStyle())
+            ForEach(displayedOutput.wrappedValue, id: \.self) { error in
+                VStack(alignment: .leading) {
+                    Button(action: {
+                        lineError.wrappedValue = extractLine(text: error) ?? 0
+                        print(lineError.wrappedValue)
+                        clickedError.wrappedValue = true
+                    }) {
+                        Text(error)
+                            .font(.system(size: 16, weight: .regular, design: .monospaced))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .textSelection(.enabled)
+                    }.buttonStyle(PlainButtonStyle())
+                }
+            }
         }
         .padding(5)
     }

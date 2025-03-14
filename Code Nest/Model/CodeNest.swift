@@ -14,7 +14,7 @@ struct CodeNest {
     private(set) var code: String?
     private(set) var nameOfFile: String = "untitled"
     private(set) var output: String?
-    private(set) var error: String?
+    private(set) var errors: [String]?
     private(set) var path: URL?
     private(set) var running = false
     private(set) var terminated = false
@@ -44,8 +44,8 @@ struct CodeNest {
     mutating func runFileAsync(completion: @escaping (CodeNest) -> Void) {
         var runner = self
         runner.running = true
-        runner.output = nil
-        runner.error = nil
+        runner.output = ""
+        runner.errors = []
         runner.terminated = false
         
         DispatchQueue.main.async {
@@ -92,7 +92,7 @@ struct CodeNest {
             errorPipe.fileHandleForReading.readabilityHandler = { handle in
                 let errorData = handle.availableData
                 if !errorData.isEmpty, let newError = String(data: errorData, encoding: .utf8) {
-                    runner.error = (runner.error ?? "") + newError
+                    runner.errors?.append(newError)
                     DispatchQueue.main.async {
                         completion(runner)
                     }

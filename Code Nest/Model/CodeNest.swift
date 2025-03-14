@@ -8,7 +8,7 @@
 import Foundation
 import Darwin
 
-private let maxOutputLength = 8192
+private let maxOutputLength = 32768
 
 struct CodeNest {
     private(set) var code: String?

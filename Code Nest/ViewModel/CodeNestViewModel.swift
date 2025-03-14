@@ -9,11 +9,7 @@ import Foundation
 import SwiftUI
 
 class CodeNestViewModel: ObservableObject {
-    @Published private var codeRunner: CodeNest
-    
-    init() {
-        self.codeRunner = CodeNest()
-    }
+    @Published private var codeRunner: CodeNest = CodeNest()
     
     func updateCode(_ code: String) {
         var newRunner = self.codeRunner
@@ -23,7 +19,6 @@ class CodeNestViewModel: ObservableObject {
     
     func runCode() {
         codeRunner.saveFile()
-        
         codeRunner.runFileAsync { updatedRunner in
             DispatchQueue.main.async {
                 self.codeRunner = updatedRunner
@@ -35,9 +30,7 @@ class CodeNestViewModel: ObservableObject {
     func terminateProcess() {
         DispatchQueue.global(qos: .background).async {
             var updated = self.codeRunner
-            
             updated.terminateProcess()
-            
             DispatchQueue.main.async {
                 self.codeRunner = updated
             }

@@ -1,13 +1,13 @@
-#CODE NEST
+# Code Nest
 
-Code Nest is a minimal code editor which allows users to run Swift code very fast without hassle.
-The application offers real-time output, syntax highlighting, and easy navigation to the errors.
-Code Nest implements basic functionalities like saving the current code and load another code file into the editor.
+**Code Nest** is a lightweight and efficient Swift code editor designed for rapid execution and seamless development. It features real-time output visualization, syntax highlighting, and an intuitive interface for navigating errors efficiently.
 
-It uses multithreading which allows the application to run the program on parallel so the editor remains fully functional while running a code. 
-It's also very memory efficient, any cases of infinite loops which lead to memory corruption are being automatically detected and the process is automatically shut down to prevent
-the app from turning unresponsive. 
+The editor provides essential functionalities such as saving the current code state and loading external code files directly into the workspace.
 
+## Performance & Reliability
 
-##IMPORTANT
-In order to run the code within the app you need to disable the App Sandbox, by going to the project Signing & Capabities and delete App Sandbox.
+Code Nest leverages **multithreading** to execute code in parallel, ensuring that the editor remains responsive even while running intensive computations. Additionally, it incorporates advanced memory management techniques to detect and handle infinite loops, preventing potential memory leaks or application freezes by automatically terminating unresponsive processes.
+
+## Important Notice
+
+To enable code execution within the application, **App Sandbox** must be disabled. This can be done by navigating to **Signing & Capabilities** in the project settings and removing the **App Sandbox** entitlement.
